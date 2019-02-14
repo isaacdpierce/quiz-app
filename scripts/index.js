@@ -1,18 +1,21 @@
-const STORE = {
-  question: `What?`,
-  answer1: `now`,
-  answer2: `then`,
-  answer3: `here`,
-  answer4: `over there`
-};
+// CHECK right answer by confirming the radio button id selected matches the correct answer number in the object
 
 function makeForm() {
-  const { question, answer1, answer2, answer3, answer4 } = STORE;
+  let questionCount = 0;
+
+  const {
+    number,
+    question,
+    answer1,
+    answer2,
+    answer3,
+    answer4
+  } = STORE.questionBlocks[questionCount];
 
   console.log('makeForm is running');
   return `
   <form class="quiz__form">
-  <h3>${question}</h3>
+  <h3>#${number}. ${question}</h3>
   <ul>
     <li>
       <label for="answer__1">
