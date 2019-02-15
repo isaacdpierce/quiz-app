@@ -7,7 +7,7 @@ const STORE = {
       answer2: `Simple Visible Greyscale`,
       answer3: `Skookum Valley of Gazette`,
       answer4: `Sorted Visual Glyphs`,
-      correctAnswer: 1,
+      correctAnswer: 'answer1',
     },
     {
       number: 2,
@@ -16,7 +16,7 @@ const STORE = {
       answer2: `Markdown`,
       answer3: `XML Markup`,
       answer4: `Rotokas`,
-      correctAnswer: 3,
+      correctAnswer: `answer3`,
     },
     {
       number: 3,
@@ -25,7 +25,7 @@ const STORE = {
       answer2: `designers dislike using SVG images because they don't allow them to create multi-color icons `,
       answer3: `SVG is easy to animate`,
       answer4: `SVG provides some image editing effects, like masking and clipping, applying filters`,
-      correctAnswer: 2,
+      correctAnswer: `answer2`,
     },
     {
       number: 4,
@@ -34,7 +34,7 @@ const STORE = {
       answer2: `only line and path `,
       answer3: `only Rick and Morty`,
       answer4: `all elements can be animated`,
-      correctAnswer: 4,
+      correctAnswer: `answer4`,
     },
     {
       number: 5,
@@ -43,7 +43,7 @@ const STORE = {
       answer2: `the radius and the diameter`,
       answer3: `the center coordinates`,
       answer4: `the opposite to the C3 and P0 coordinates`,
-      correctAnswer: 3,
+      correctAnswer: `answer5`,
     },
     {
       number: 6,
@@ -52,7 +52,7 @@ const STORE = {
       answer2: `the start points for the x and y coordinates`,
       answer3: `mimic the x2 and y2 chromosomes in healthy babies`,
       answer4: `the width of a line`,
-      correctAnswer: 2,
+      correctAnswer: `answer2`,
     },
     {
       number: 7,
@@ -61,7 +61,7 @@ const STORE = {
       answer2: `The communication path between a CSS file and an SVG`,
       answer3: `A special lane on a pedestrian sidewalk for texting and walking`,
       answer4: `Defines the curves of a font`,
-      correctAnswer: 1,
+      correctAnswer: `answer1`,
     },
     {
       number: 8,
@@ -70,7 +70,7 @@ const STORE = {
       answer2: `creates a line on the g axis`,
       answer3: `defines the noun variable in a common greeting to a fellow gangster`,
       answer4: `allows you to group multiple elements`,
-      correctAnswer: 4,
+      correctAnswer: `answer4`,
     },
     {
       number: 9,
@@ -79,7 +79,7 @@ const STORE = {
       answer2: `In a 12 gauge shotgun`,
       answer3: `Inline HTML`,
       answer4: `In a canvas element`,
-      correctAnswer: 3,
+      correctAnswer: `answer3`,
     },
     {
       number: 10,
@@ -88,7 +88,7 @@ const STORE = {
       answer2: `You must wrap it in an <a> tag`,
       answer3: `It could be accused of butting by the element behind it`,
       answer4: `You can change any SVG attribute using JavaScript`,
-      correctAnswer: 4,
+      correctAnswer: `answer4`,
     },
   ],
 };
