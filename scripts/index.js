@@ -8,16 +8,6 @@ function showCorrect(correctAnswer) {
   console.log(`The correct answer is ${correctAnswer}`);
 }
 
-function nextQuestion() {
-  const question = questionSet[questionNum - 1];
-
-  const questionsAnswered = questionNum - 1;
-
-  $('#container').html(
-    questionTemplate(correctAnswers, question, questionsAnswered)
-  );
-}
-
 //////////////////////////////////////////////////////
 // HTML PRODUCTION FUNCTIONS //////////////////////////////
 ////////////////////////////////////////////////////
@@ -42,10 +32,7 @@ function makeForm() {
     answer3,
     answer4,
     correctAnswer,
-  } = STORE.questionBlocks;
-
-  console.log('makeForm is running');
-  showCorrect(correctAnswer);
+  } = renderNextQuestion();
 
   return `
   <form class="quiz__form">
@@ -118,7 +105,7 @@ function makeWrongPopup() {
   `;
 }
 
-function makeCorrectPopup() {
+function makeRightPopup() {
   return `
     <aside class='js-popup__response popup__response'>
     <div class='popup__text'>
@@ -132,45 +119,54 @@ function makeCorrectPopup() {
 }
 
 ////////////////////////////////////////////////////////
-// RENDER TO AND REMOVE FROM DOM FUNCTIONS ////////////
+// RENDER TO DOM FUNCTIONS ////////////////////////////
 //////////////////////////////////////////////////////
 
 function renderStartPage() {
   $('.quiz__container').append(makeStartPage);
 }
 
+function renderForm() {
+  if (questionCount <= 9) {
+    $('.quiz__container').append(makeForm);
+  } else {
+    alert('game over');
+  }
+}
+
+let questionCount = 0;
+
+function renderNextQuestion() {
+  let currentQuestion = STORE.questionBlocks[questionCount];
+  questionCount++;
+  return currentQuestion;
+}
+
+function renderCorrectResponse() {
+  $('main').append(makeRightPopup);
+}
+function renderWrongResponse() {
+  $('main').append(makeWrongPopup);
+}
+
+////////////////////////////////////////////////////////
+// REMOVE FROM DOM FUNCTIONS //////////////////////////
+//////////////////////////////////////////////////////
+
 function removeStartPage() {
   $('.js-hero__start').remove();
 }
 
 function removePopup() {
-  $('.js-popup__response').remove();
+  if ('js-popup__response') {
+    $('.js-popup__response').remove();
+  }
 }
 
-function renderQuestions() {
-  $('.quiz__container').append(makeForm);
-}
-
-function renderNextQuestion() {
-  let questionCount = 0;
-  let currentQuestion = STORE.questionBlocks[questionCount];
-  console.log(currentQuestion);
-
-  // if (questionCount > 10) {
-  //   // game over
-  //   // reveal score and praise or shame
-  //   console.log('Gameover');
-  // }
-  questionCount++;
-  console.log(questionCount);
-  return questionCount;
-}
-
-function renderCorrectResponse() {
-  $('main').append(makeCorrectPopup);
-}
-function renderWrongResponse() {
-  $('main').append(makeWrongPopup);
+function removeRecentQuestion() {
+  if ($('.quiz__form')) {
+    $('.quiz__form').remove();
+  }
 }
 
 ////////////////////////////////////////////////////
@@ -179,19 +175,16 @@ function renderWrongResponse() {
 
 function handleStartQuiz() {
   $('.quiz__container').on('click', '#js-button__start', function(event) {
-    // console.log(event);
     removeStartPage();
-    renderQuestions();
+    renderForm();
   });
 }
 
 function handleSubmitAnswer() {
-  const answer = STORE.questionBlocks[0].correctAnswer;
-
   // Onsubmit get correct answer from STORE
-  $('.js-quiz__container').on('submit', 'form', function(e) {
-    e.preventDefault();
-    console.log(`Correct answer is ${answer}`);
+  $('.js-quiz__container').on('submit', 'form', function(event) {
+    let answer = STORE.questionBlocks[questionCount - 1].correctAnswer;
+    event.preventDefault();
 
     // check if answer is same as the checked input
     if (answer === $('input:checked').attr('id')) {
@@ -203,10 +196,10 @@ function handleSubmitAnswer() {
 }
 
 function handleNextQuestionButton() {
-  $(document).on('click', function() {
+  $('main').on('click', '.js-btn__question-next', function(event) {
     removePopup();
-    // get next question
-    renderNextQuestion();
+    removeRecentQuestion();
+    renderForm();
   });
 }
 
@@ -218,3 +211,18 @@ function runQuiz() {
 }
 
 $(runQuiz);
+
+// function runQuiz() {
+//   renderStartPage();
+//     - > makeStartPage
+
+//   handleStartQuiz();
+//     - > removeStartPage();
+//     - > renderForm();
+
+//   handleSubmitAnswer();
+//     - > renderCorrectResponse(); || renderWrongResponse();
+
+//   handleNextQuestionButton();
+//     - > removePopup();
+//     - > renderForm();

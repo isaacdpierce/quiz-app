@@ -43,7 +43,7 @@ const STORE = {
       answer2: `the radius and the diameter`,
       answer3: `the center coordinates`,
       answer4: `the opposite to the C3 and P0 coordinates`,
-      correctAnswer: `answer5`,
+      correctAnswer: `answer3`,
     },
     {
       number: 6,
