@@ -1,5 +1,6 @@
 const STORE = {
   rightAnswers: 0,
+  questionCount: 0,
   questionBlocks: [
     {
       number: 1,

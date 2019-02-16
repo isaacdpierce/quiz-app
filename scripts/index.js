@@ -134,18 +134,16 @@ function renderStartPage() {
 }
 
 function renderForm() {
-  if (questionCount <= 9) {
+  if (STORE.questionCount <= 9) {
     $('.quiz__container').append(makeForm);
   } else {
     alert('game over');
   }
 }
 
-let questionCount = 0;
-
 function renderNextQuestion() {
-  let currentQuestion = STORE.questionBlocks[questionCount];
-  questionCount++;
+  let currentQuestion = STORE.questionBlocks[STORE.questionCount];
+  STORE.questionCount += 1;
   return currentQuestion;
 }
 
@@ -191,7 +189,7 @@ function handleStartQuiz() {
 function handleSubmitAnswer() {
   // Onsubmit get correct answer from STORE
   $('.js-quiz__container').on('submit', 'form', function(event) {
-    let answer = STORE.questionBlocks[questionCount - 1].correctAnswer;
+    let answer = STORE.questionBlocks[STORE.questionCount - 1].correctAnswer;
     event.preventDefault();
 
     // check if answer is same as the checked input
