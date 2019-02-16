@@ -1,23 +1,14 @@
-// CHECK right answer by confirming the radio button id selected matches the correct answer number in the object
-
-////////////////////////////////////////////////////////
-// HELPER FUNCTIONS ///////////////////////////////////
+// TODO Check course requirements to make sure all is done.
 //////////////////////////////////////////////////////
-
-function showCorrect(correctAnswer) {
-  console.log(`The correct answer is ${correctAnswer}`);
-}
-
-//////////////////////////////////////////////////////
-// HTML PRODUCTION FUNCTIONS //////////////////////////////
+// HTML PRODUCTION FUNCTIONS ////////////////////////
 ////////////////////////////////////////////////////
 
 function makeStartPage() {
   return `
     <header class="js-hero__start hero__start">
-      <h1>The SVG Stomping Ground</h1>
+      <p class="title__name">The SVG Stomping Ground</p>
       <h3>Complete your certification in SVG badassery</h3>
-      <p>( make the internet a better place )</p>
+      <br>
       <button id="js-button__start" class="button__start" type="submit">START</button>
     </header>
   `;
@@ -88,23 +79,28 @@ function makeForm() {
     </li>
   </ul>
   <button class="btn__question btn__question-submit">Submit Answer</button>
-  <aside class="card__score">
-  <div class="card__score--text">
-    <h1>You have</h1>
-    <div class="card__score--num">${STORE.rightAnswers}</div>
-    <div>out of 10 correct</div>
-    </div>
-  </aside>
 </form>
+  `;
+}
+
+function makeScoreCard() {
+  return `
+    <aside class="card__score">
+    <div class="card__score--text">
+      <h1>You have</h1>
+      <div class="card__score--num">${STORE.rightAnswers}</div>
+      <div>out of 10 correct</div>
+    </div>
+    </aside>
   `;
 }
 
 function makeWrongPopup() {
   return `
     <aside class='js-popup__response popup__response'>
-      <div class='popup__text'>
+      <div class='popup__text popup__bg-wrong'>
         <div>
-        <p>Sadly mistaken</p>
+        <h1>Incorrect</h1>
           <button class="js-btn__question-next btn__question btn__question-next">Next \u{27A1}</button>
         </div>
       </div>
@@ -115,14 +111,30 @@ function makeWrongPopup() {
 function makeRightPopup() {
   return `
     <aside class='js-popup__response popup__response'>
-    <div class='popup__text'>
-      <div>
-      <p>Dead on</p>
-        <button class="js-btn__question-next btn__question btn__question-next">Next \u{27A1}</button>
+      <div class='popup__text popup__bg-correct'>
+        <div>
+          <h1>Correct</h1>
+          <button class="js-btn__question-next btn__question btn__question-next">Next \u{27A1}</button>
+          <h2>Score: ${STORE.rightAnswers} out of 10</h2>
+        </div>
       </div>
-    </div>
-</aside>
-  `;
+    </aside>
+    `;
+}
+
+function makeQuizOverPopup() {
+  return `
+    <aside class='js-popup__response-over popup__response popup__response-over'>
+      <div class='popup__text'>
+        <div>
+          <h1>Quiz Complete</h1>
+          <h2>You got ${STORE.rightAnswers} out 10</h2>
+          <p>You should be <span class="feedback"></span> of yourself!</p>
+          <button class="js-btn__restart btn__question btn__question-next">Restart Quiz \u{27A1}</button>
+        </div>
+      </div>
+    </aside>
+    `;
 }
 
 ////////////////////////////////////////////////////////
@@ -137,8 +149,12 @@ function renderForm() {
   if (STORE.questionCount <= 9) {
     $('.quiz__container').append(makeForm);
   } else {
-    alert('game over');
+    renderQuizOverPopup();
   }
+}
+
+function renderScoreCard() {
+  $('main').append(makeScoreCard);
 }
 
 function renderNextQuestion() {
@@ -148,11 +164,30 @@ function renderNextQuestion() {
 }
 
 function renderCorrectResponse() {
-  $('main').append(makeRightPopup);
   STORE.rightAnswers += 1;
+  renderScoreCard();
+  $('main').append(makeRightPopup);
 }
 function renderWrongResponse() {
   $('main').append(makeWrongPopup);
+}
+
+function renderQuizOverPopup() {
+  $('main').append(makeQuizOverPopup);
+  renderFeedback();
+}
+
+function renderFeedback() {
+  totalRight = STORE.rightAnswers;
+  if (totalRight < 8) {
+    // TODO /////////////////////////////////////////////////////
+    // Get image to add to background
+    $('.popup__text').addClass('.popup__bg-shame');
+    $('.feedback').append('ashamed');
+  } else {
+    $('.popup__text').addClass('.popup__bg-praise');
+    $('.feedback').append('proud');
+  }
 }
 
 ////////////////////////////////////////////////////////
@@ -182,6 +217,7 @@ function removeRecentQuestion() {
 function handleStartQuiz() {
   $('.quiz__container').on('click', '#js-button__start', function(event) {
     removeStartPage();
+    renderScoreCard();
     renderForm();
   });
 }
@@ -192,7 +228,7 @@ function handleSubmitAnswer() {
     let answer = STORE.questionBlocks[STORE.questionCount - 1].correctAnswer;
     event.preventDefault();
 
-    // check if answer is same as the checked input
+    // check if answer is same as the checked input id
     if (answer === $('input:checked').attr('id')) {
       renderCorrectResponse();
     } else {
@@ -218,6 +254,10 @@ function runQuiz() {
 
 $(runQuiz);
 
+//////////////////////////////////////////////////////////////
+// LEGEND ///////////////////////////////////////////////////
+////////////////////////////////////////////////////////////
+
 // function runQuiz() {
 //   renderStartPage();
 //     - > makeStartPage
@@ -232,3 +272,13 @@ $(runQuiz);
 //   handleNextQuestionButton();
 //     - > removePopup();
 //     - > renderForm();
+//     - > increment rightScore;
+
+//   handleQuizOver();
+//     - > renderQuizOverPopup();
+//       - > removeRecentQuestion();
+//       - > makeOverPopup();
+//         - > show total rightScore;
+//         - > show congratualtionsMessage || shameMessage;
+// TODO //////////////////////////////////////////////////////////
+//         - > handleRestartQuiz() button;
