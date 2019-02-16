@@ -88,6 +88,13 @@ function makeForm() {
     </li>
   </ul>
   <button class="btn__question btn__question-submit">Submit Answer</button>
+  <aside class="card__score">
+  <div class="card__score--text">
+    <h1>You have</h1>
+    <p class="card__score--num">${STORE.rightAnswers}</p>
+    <div>out of 10 correct</div>
+    </div>
+  </aside>
 </form>
   `;
 }
@@ -142,6 +149,7 @@ function renderNextQuestion() {
 
 function renderCorrectResponse() {
   $('main').append(makeRightPopup);
+  STORE.rightAnswers += 1;
 }
 function renderWrongResponse() {
   $('main').append(makeWrongPopup);
