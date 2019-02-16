@@ -16,7 +16,7 @@ main {
 
 ul {
   list-style-type: none;
-  margin: 0;
+  margin: 0 0 2rem 0;
   padding: 0;
 }
 
@@ -37,7 +37,8 @@ button {
 
 .quiz__container {
   width: 50vw;
-  padding: 70px 90px;
+  min-width: 380px;
+  padding: 6vw 9vw;
   border-radius: 6px;
   box-shadow: 0px 1px 2px 1px #999;
 }
@@ -64,9 +65,31 @@ button {
 }
 
 .popup__text p {
-  font-size: 9rem;
+  font-size: 6rem;
 }
 
 .hidden {
   display: none;
+}
+
+.card__score {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: aqua;
+  color: aliceblue;
+  height: 20rem;
+  width: 20rem;
+  position: absolute;
+  top: -50%;
+  right: -35%;
+  border-radius: 50%;
+}
+
+.card__score--text {
+  text-align: center;
+}
+
+.card__score--num {
+  font-size: 2rem;
 }
