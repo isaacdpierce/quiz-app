@@ -91,5 +91,9 @@ button {
 }
 
 .card__score--num {
-  font-size: 2rem;
+  font-size: 2.5rem;
+  padding: 1rem;
+  box-shadow: inset 0 1px 1px 1px rgb(2, 174, 174);
+  background-color: rgb(3, 230, 230);
+  margin-bottom: 6px;
 }

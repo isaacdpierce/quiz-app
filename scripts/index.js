@@ -91,7 +91,7 @@ function makeForm() {
   <aside class="card__score">
   <div class="card__score--text">
     <h1>You have</h1>
-    <p class="card__score--num">${STORE.rightAnswers}</p>
+    <div class="card__score--num">${STORE.rightAnswers}</div>
     <div>out of 10 correct</div>
     </div>
   </aside>
