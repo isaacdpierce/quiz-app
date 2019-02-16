@@ -1,4 +1,5 @@
 const STORE = {
+  questionCount: 0,
   questionBlocks: [
     {
       number: 1,
