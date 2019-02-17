@@ -14,7 +14,7 @@ main {
   height: 100vh;
   display: grid;
   place-items: center;
-  background: no-repeat center url('/images/snowy-mountains.jpg');
+  background: no-repeat center url('images/snowy-mountains.jpg');
   background-size: cover;
 }
 
