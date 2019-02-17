@@ -5,8 +5,10 @@
 function makeStartPage() {
   return `
     <header class="js-hero__start hero__start"> 
-      <p class="title__name">The SVG Stomping Grounds</p>
-      <h3>Complete your certification in SVG mastery</h3>
+      <hgroup>
+        <h1 class="title__name">The SVG Stomping Grounds</h1>
+        <h3>Complete your certification in SVG mastery</h3>
+      </hgroup>
       <br>
       <button class="js-button__start button__start" type="submit">START</button>
     </header>
@@ -29,57 +31,59 @@ function makeForm() {
         <span class="number">#${number}</span>
         <h1><span class="question">${question}</span></h1>
       </header>
-      <ul>
-        <li>
-          <label for="answer1">
-            <input
-              type="radio"
-              id="answer1"
-              class="js-answer1 answer1"
-              name="answer"
-              value=""
-              required
-            />
-            ${answer1}
-          </label>
-        </li>
-        <li>
-          <label for="answer2">
-            <input
-              type="radio"
-              id="answer2"
-              class="js-answer2 answer2"
-              name="answer"
-              value=""
-            />
-            ${answer2}
-          </label>
-        </li>
-        <li>
-          <label for="answer3">
-            <input
-              type="radio"
-              id="answer3"
-              class="js-answer3 answer3"
-              name="answer"
-              value=""
-            />
-            ${answer3}
-          </label>
-        </li>
-        <li>
-          <label for="answer4">
-            <input
-              type="radio"
-              id="answer4"
-              class="js-answer4 answer4"
-              name="answer"
-              value=""
-            />
-            ${answer4}
-          </label>
-        </li>
-      </ul>
+      <fieldset>
+        <ul>
+          <li>
+            <label for="answer1">
+              <input
+                type="radio"
+                id="answer1"
+              answer1 answer1"
+                name="answer"
+                value=""
+                required
+              />
+              ${answer1}
+            </label>
+          </li>
+          <li>
+            <label for="answer2">
+              <input
+                type="radio"
+                id="answer2"
+                class="answer2"
+                name="answer"
+                value=""
+              />
+              ${answer2}
+            </label>
+          </li>
+          <li>
+            <label for="answer3">
+              <input
+                type="radio"
+                id="answer3"
+                class="answer3"
+                name="answer"
+                value=""
+              />
+              ${answer3}
+            </label>
+          </li>
+          <li>
+            <label for="answer4">
+              <input
+                type="radio"
+                id="answer4"
+                class="answer4"
+                name="answer"
+                value=""
+              />
+              ${answer4}
+            </label>
+          </li>
+        </ul>
+      </fieldset>
       <button class="btn__question btn__question-submit">Submit</button>
     </form>
   `;
@@ -88,11 +92,11 @@ function makeForm() {
 function makeScoreCard() {
   return `
     <aside class="card__score position--corner">
-    <div class="card__score--text">
-      <h1>You have</h1>
-      <div class="card__score--num">${STORE.rightAnswers}</div>
-      <div>out of 10 correct</div>
-    </div>
+      <div class="card__score--text">
+        <h1>You have</h1>
+        <div class="card__score--num">${STORE.rightAnswers}</div>
+        <div>out of 10 correct</div>
+      </div>
     </aside>
   `;
 }
@@ -105,10 +109,9 @@ function makeWrongPopup() {
         <hgroup>
           <h1>Incorrect</h1>
           <h2>The correct response was:</h2>
+        </hgroup>
           <p class="js-popup__response--correct"></p>
           <button class="js-btn__question-next btn__question btn__question-next">Next \u{27A1}</button>
-        </hgroup>
-        
       </header>
     </aside>
   `;
@@ -122,8 +125,8 @@ function makeRightPopup() {
           <hgroup>
             <h1>Correct</h1>
             <h2>1 step closer to SVG mastery</h2>
-            <button class="js-btn__question-next btn__question btn__question-next">Next \u{27A1}</button>
           </hgroup>
+            <button class="js-btn__question-next btn__question btn__question-next">Next \u{27A1}</button>
         </header>
       </div>
     </aside>
@@ -134,12 +137,14 @@ function makeQuizOverPopup() {
   return `
     <aside class='js-popup__response-over popup__response popup__response-over'>
       <div class='popup__text'>
-        <div>
-          <h1>Quiz Complete</h1>
-          <h2>You got ${STORE.rightAnswers} out 10 correct</h2>
+        <header>
+          <hgroup>
+            <h1>Quiz Complete</h1>
+            <h2>You got ${STORE.rightAnswers} out 10 correct</h2>
+          </hgroup>
           <p>You oughta be <span class="feedback"></span> of yourself!</p>
           <button class="js-btn__restart btn__question btn__question-next">Restart</button>
-        </div>
+        </header>
       </div>
     </aside>
     `;

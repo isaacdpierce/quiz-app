@@ -19,7 +19,11 @@ main {
 }
 
 hgroup h2 {
-  color: white;
+  color: rgb(2, 213, 255);
+}
+
+fieldset {
+  border: none;
 }
 
 .number {
