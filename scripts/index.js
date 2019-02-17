@@ -138,7 +138,7 @@ function makeQuizOverPopup() {
       <div class='popup__text'>
         <div>
           <h1>Quiz Complete</h1>
-          <h2>You got ${STORE.rightAnswers} out 10</h2>
+          <h2>You got ${STORE.rightAnswers} out 10 correct</h2>
           <p>You oughta be <span class="feedback"></span> of yourself!</p>
           <button class="js-btn__restart btn__question btn__question-next">Restart</button>
         </div>
