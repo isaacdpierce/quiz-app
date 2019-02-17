@@ -6,6 +6,7 @@ body * {
   position: relative;
   box-sizing: border-box;
   font-size: 1.6rem;
+  font-family: 'Fira Sans', sans-serif;
 }
 
 main {
@@ -13,8 +14,60 @@ main {
   height: 100vh;
   display: grid;
   place-items: center;
-  background: url('/images/snowy-mountains.jpg') no-repeat center;
+  background: no-repeat center url('/images/snowy-mountains.jpg');
   background-size: cover;
+}
+
+.number {
+  display: inline-block;
+  padding: 2rem;
+  font-size: 5rem;
+  color: #ebf6ff;
+  border-radius: 50%;
+  position: absolute;
+  box-shadow: -2px 2px 9px 3px rgba(6, 6, 6, 0.043);
+  background: radial-gradient(
+    circle at 50% 120%,
+    #81e8f6,
+    #76deef 10%,
+    #1e7acb 80%,
+    #1b4c7b 100%
+  );
+  top: -110px;
+  left: -110px;
+}
+
+.number:before {
+  content: '';
+  position: absolute;
+  top: 1%;
+  left: 1%;
+  width: 95%;
+  height: 80%;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 50% 0px,
+    #ffffff,
+    rgba(255, 255, 255, 0) 58%
+  );
+  filter: blur(5px);
+
+  z-index: 2;
+}
+
+.question {
+  font-size: 4rem;
+  color: #024179;
+}
+
+.quiz__form label {
+  color: #002545;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.quiz__form input {
+  border: 1px solid red;
 }
 
 ul {
@@ -33,13 +86,28 @@ input[type='radio'] {
 
 button {
   padding: 1rem 1.5rem;
-  width: 20rem;
+  width: 100%;
   border-radius: 6px;
-  box-shadow: 0px 1px 2px 1px #222;
+  background: linear-gradient(#a9d0f2, #88b9ed 10%, #1e7acb 80%, #1b4c7b 100%);
+  box-shadow: 0 1px 1px 1px rgba(0, 0, 0, 0.468);
+  border: none;
+  font-size: 2.5rem;
+  color: whitesmoke;
+  transition: all 0.2s;
+}
+
+button:focus,
+button:hover {
+  box-shadow: 0 0px 1px 1px rgba(0, 0, 0, 0.242);
+  background: linear-gradient(#b4dbfe, #91c5fc 10%, #1f85de 80%, #2967a2 100%);
+}
+
+.button__start {
+  width: 60%;
 }
 
 .quiz__container {
-  width: 50vw;
+  width: 70vw;
   min-width: 380px;
   padding: 6vw 9vw;
   border-radius: 6px;
@@ -48,6 +116,7 @@ button {
 }
 
 .hero__start {
+  padding: 2rem;
   text-align: center;
   text-transform: uppercase;
 }
@@ -58,10 +127,12 @@ button {
 
 .popup__response {
   display: grid;
+  text-transform: uppercase;
   place-items: center;
+  text-align: center;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.351);
+  background-color: rgba(255, 255, 255, 0.393);
   position: absolute;
   top: 0;
   z-index: 99;
@@ -69,32 +140,40 @@ button {
 
 .popup__text {
   display: grid;
+  padding: 2rem;
   place-items: center;
-  text-align: center;
   border-radius: 6px;
-  color: white;
-  text-shadow: 0px 1px 2px black;
-  width: 50vw;
+  color: #0069c4;
+  text-shadow: 0px 1px 2px rgb(0, 0, 0);
+  width: 70vw;
+  min-width: 360px;
   height: 80vh;
-  box-shadow: 0px 2px 2px 2px #222;
+  border: 4rem inset #a7cff2;
+  box-shadow: 0px 1px 1px 1px rgb(99, 99, 99);
 }
 
 .popup__bg-wrong {
-  background: url('/images/bg-wrong.png') no-repeat center;
+  background: url('https://media.giphy.com/media/1woAI0jMjzFhd5YhGz/giphy.gif')
+    no-repeat center;
   background-size: cover;
-  filter: brightness(120%);
+  filter: brightness(110%);
 }
 
 .popup__bg-correct {
-  background: url('/images/bg-correct.jpg') no-repeat center;
+  background: url('https://media.giphy.com/media/n6s4hN5Vs7zSU/giphy.gif')
+    no-repeat center;
   background-size: cover;
+  filter: brightness(110%);
 }
 .popup__bg-praise {
-  background: url('/images/bg-praise.jpg') no-repeat center;
+  background: url('https://media.giphy.com/media/3o7qDVArtXdtl223Ek/giphy.gif')
+    no-repeat center;
   background-size: cover;
+  filter: brightness(120%);
 }
 .popup__bg-shame {
-  background: url('/images/bg-shame.jpg') no-repeat center;
+  background: url('https://media.giphy.com/media/3o7WIK06ZsP1otF7na/giphy.gif')
+    no-repeat center;
   background-size: cover;
 }
 
@@ -114,6 +193,10 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
+  color: aliceblue;
+  height: 20rem;
+  width: 20rem;
+  padding: 5rem;
   background: radial-gradient(
     circle at 50% 120%,
     #81e8f6,
@@ -121,16 +204,13 @@ button {
     #1e7acb 80%,
     #1b4c7b 100%
   );
-  color: aliceblue;
-  height: 20rem;
-  width: 20rem;
-  position: absolute;
-  top: 10%;
-  right: 20%;
   border-radius: 50%;
   overflow: hidden;
+  box-shadow: -2px 2px 9px 3px rgba(6, 6, 6, 0.043);
+  position: absolute;
+  top: 5%;
+  right: 10%;
   z-index: 100;
-  box-shadow: -2px 2px 9px 3px rgba(0, 0, 0, 0.071);
 }
 
 .card__score:before {
@@ -165,5 +245,48 @@ button {
 
 .feedback {
   font-size: 4rem;
-  border-bottom: 1px solid red;
+  border-bottom: 1px solid rgb(77, 110, 244);
+}
+
+@media only screen and (max-width: 1000px) {
+  .quiz__container {
+    padding-top: 16rem;
+    margin-top: 7rem;
+  }
+
+  .number {
+    left: 0;
+    z-index: 200;
+    font-size: 4rem;
+  }
+
+  .card__score {
+    height: 18rem;
+    width: 18rem;
+  }
+  .popup__text {
+    margin-top: 7rem;
+    padding-top: 5rem;
+  }
+  .card__score {
+    position: absolute;
+    right: 50%;
+    transform: translateX(50%);
+    border-radius: 50%;
+  }
+  .popup__text h1 {
+    font-size: 5rem;
+  }
+
+  .popup__text h2 {
+    font-size: 3rem;
+  }
+
+  .popup__text p {
+    font-size: 2rem;
+  }
+
+  .feedback {
+    font-size: 2.5rem;
+  }
 }
