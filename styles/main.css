@@ -107,6 +107,7 @@ button:hover {
 }
 
 .quiz__container {
+  position: relative;
   width: 70vw;
   min-width: 380px;
   padding: 6vw 9vw;
@@ -116,6 +117,8 @@ button:hover {
 }
 
 .hero__start {
+  display: grid;
+  place-items: center;
   padding: 2rem;
   text-align: center;
   text-transform: uppercase;

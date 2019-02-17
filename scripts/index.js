@@ -4,7 +4,7 @@
 
 function makeStartPage() {
   return `
-    <header class="js-hero__start hero__start">
+    <header class="js-hero__start hero__start"> 
       <p class="title__name">The SVG Stomping Ground</p>
       <h3>Complete your certification in SVG badassery</h3>
       <br>
@@ -27,7 +27,7 @@ function makeForm() {
   return `
     <form class="quiz__form">
       <header>
-        <span class="number">#${number}.</span>
+        <span class="number">#${number}</span>
         <p><span class="question">${question}</span></p>
       </header>
       <ul>
@@ -88,7 +88,7 @@ function makeForm() {
 
 function makeScoreCard() {
   return `
-    <aside class="card__score">
+    <aside class="card__score position--corner">
     <div class="card__score--text">
       <h1>You have</h1>
       <div class="card__score--num">${STORE.rightAnswers}</div>
