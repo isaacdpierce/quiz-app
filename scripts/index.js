@@ -176,12 +176,10 @@ function renderNextQuestion() {
 
 function renderCorrectResponse() {
   STORE.rightAnswers += 1;
-  removeRecentQuestion();
   renderScoreCard();
   $('main').append(makeRightPopup);
 }
 function renderWrongResponse() {
-  removeRecentQuestion();
   $('main').append(makeWrongPopup);
 }
 
@@ -258,6 +256,8 @@ function handleSubmitAnswer() {
       renderWrongResponse();
       $('.js-popup__response--correct').append(answerText);
     }
+
+    removeRecentQuestion();
   });
 }
 
@@ -293,32 +293,3 @@ function runQuiz() {
 }
 
 $(runQuiz);
-
-//////////////////////////////////////////////////////////////
-// LEGEND ///////////////////////////////////////////////////
-////////////////////////////////////////////////////////////
-
-// function runQuiz() {
-//   renderStartPage();
-//     - > makeStartPage
-
-//   handleStartQuiz();
-//     - > removeStartPage();
-//     - > renderForm();
-
-//   handleSubmitAnswer();
-//     - > renderCorrectResponse(); || renderWrongResponse();
-
-//   handleNextQuestionButton();
-//     - > removePopup();
-//     - > renderForm();
-//     - > increment rightScore;
-
-//   handleQuizOver();
-//     - > renderQuizOverPopup();
-//       - > removeRecentQuestion();
-//       - > makeOverPopup();
-//         - > show total rightScore;
-//         - > show congratualtionsMessage || shameMessage;
-// TODO //////////////////////////////////////////////////////////
-//         - > handleRestartQuiz() button;
