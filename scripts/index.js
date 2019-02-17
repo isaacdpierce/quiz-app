@@ -1,6 +1,3 @@
-// TODO Check course requirements to make sure all is done.
-// TODO Show Correct answer when wrong answer is chosen
-// TODO Remove score from bottom of correct popup
 ////////////////////////////////////////////////////////
 // HTML PRODUCTION FUNCTIONS ////////////////////////
 ////////////////////////////////////////////////////
@@ -179,8 +176,9 @@ function renderCorrectResponse() {
   renderScoreCard();
   $('main').append(makeRightPopup);
 }
-function renderWrongResponse() {
+function renderWrongResponse(answerText) {
   $('main').append(makeWrongPopup);
+  $('.js-popup__response--correct').append(answerText);
 }
 
 function renderQuizOverPopup() {
@@ -244,20 +242,18 @@ function handleSubmitAnswer() {
   // Onsubmit get correct answer from STORE
   $('.js-quiz__container').on('submit', 'form', function(event) {
     let currentQuestion = STORE.questionBlocks[STORE.questionCount - 1];
-    let answer = currentQuestion.correctAnswer;
-    let answerText = currentQuestion[answer];
+    let { correctAnswer } = currentQuestion;
+    let answerText = currentQuestion[correctAnswer];
+    let userAnswer = $('input:checked').attr('id');
 
     event.preventDefault();
+    removeRecentQuestion();
 
-    // check if answer is same as the checked input id
-    if (answer === $('input:checked').attr('id')) {
+    if (userAnswer === correctAnswer) {
       renderCorrectResponse();
     } else {
-      renderWrongResponse();
-      $('.js-popup__response--correct').append(answerText);
+      renderWrongResponse(answerText);
     }
-
-    removeRecentQuestion();
   });
 }
 

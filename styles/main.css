@@ -86,7 +86,7 @@ input[type='radio'] {
 
 button {
   padding: 1rem 1.5rem;
-  width: 100%;
+  width: 50%;
   border-radius: 6px;
   background: linear-gradient(#a9d0f2, #88b9ed 10%, #1e7acb 80%, #1b4c7b 100%);
   box-shadow: 0 1px 1px 1px rgba(0, 0, 0, 0.468);
