@@ -8,7 +8,7 @@ function makeStartPage() {
       <p class="title__name">The SVG Stomping Grounds</p>
       <h3>Complete your certification in SVG mastery</h3>
       <br>
-      <button id="js-button__start" class="button__start" type="submit">START</button>
+      <button class="js-button__start button__start" type="submit">START</button>
     </header>
   `;
 }
@@ -21,14 +21,13 @@ function makeForm() {
     answer2,
     answer3,
     answer4,
-    correctAnswer,
   } = renderNextQuestion();
 
   return `
     <form class="quiz__form">
       <header>
         <span class="number">#${number}</span>
-        <p><span class="question">${question}</span></p>
+        <h1><span class="question">${question}</span></h1>
       </header>
       <ul>
         <li>
@@ -100,7 +99,6 @@ function makeScoreCard() {
 
 function makeWrongPopup() {
   let nextQuestion = renderNextQuestion();
-  let correctAnswer = nextQuestion.correctAnswer;
   return `
     <aside class='js-popup__response popup__response'>
       <header class='popup__text popup__bg-wrong'>
@@ -233,7 +231,7 @@ function removeScoreCard() {
 //////////////////////////////////////////////////
 
 function handleStartQuiz() {
-  $('.quiz__container').on('click', '#js-button__start', function(event) {
+  $('.quiz__container').on('click', '.js-button__start', function(event) {
     removeStartPage();
     renderScoreCard();
     renderForm();
