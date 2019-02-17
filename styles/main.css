@@ -18,6 +18,10 @@ main {
   background-size: cover;
 }
 
+hgroup h2 {
+  color: white;
+}
+
 .number {
   display: inline-block;
   padding: 2rem;

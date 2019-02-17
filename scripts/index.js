@@ -5,8 +5,8 @@
 function makeStartPage() {
   return `
     <header class="js-hero__start hero__start"> 
-      <p class="title__name">The SVG Stomping Ground</p>
-      <h3>Complete your certification in SVG badassery</h3>
+      <p class="title__name">The SVG Stomping Grounds</p>
+      <h3>Complete your certification in SVG mastery</h3>
       <br>
       <button id="js-button__start" class="button__start" type="submit">START</button>
     </header>
@@ -81,7 +81,7 @@ function makeForm() {
           </label>
         </li>
       </ul>
-      <button class="btn__question btn__question-submit">Submit Answer</button>
+      <button class="btn__question btn__question-submit">Submit</button>
     </form>
   `;
 }
@@ -120,11 +120,13 @@ function makeRightPopup() {
   return `
     <aside class='js-popup__response popup__response'>
       <div class='popup__text popup__bg-correct'>
-        <div>
-          <h1>Correct</h1>
-          <p>1 step closer to SVG badassery</p>
-          <button class="js-btn__question-next btn__question btn__question-next">Next \u{27A1}</button>
-        </div>
+        <header>
+          <hgroup>
+            <h1>Correct</h1>
+            <h2>1 step closer to SVG mastery</h2>
+            <button class="js-btn__question-next btn__question btn__question-next">Next \u{27A1}</button>
+          </hgroup>
+        </header>
       </div>
     </aside>
     `;
@@ -138,7 +140,7 @@ function makeQuizOverPopup() {
           <h1>Quiz Complete</h1>
           <h2>You got ${STORE.rightAnswers} out 10</h2>
           <p>You oughta be <span class="feedback"></span> of yourself!</p>
-          <button class="js-btn__restart btn__question btn__question-next">Restart Quiz \u{27A1}</button>
+          <button class="js-btn__restart btn__question btn__question-next">Restart</button>
         </div>
       </div>
     </aside>
