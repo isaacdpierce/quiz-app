@@ -38,9 +38,9 @@ function makeForm() {
               <input
                 type="radio"
                 id="answer1"
-              answer1 answer1"
+                class="answer1"
                 name="answer"
-                value=""
+                value="${answer1}"
                 required
               />
               ${answer1}
@@ -53,7 +53,7 @@ function makeForm() {
                 id="answer2"
                 class="answer2"
                 name="answer"
-                value=""
+                value="${answer2}"
               />
               ${answer2}
             </label>
@@ -65,7 +65,7 @@ function makeForm() {
                 id="answer3"
                 class="answer3"
                 name="answer"
-                value=""
+                value="${answer3}"
               />
               ${answer3}
             </label>
@@ -77,14 +77,14 @@ function makeForm() {
                 id="answer4"
                 class="answer4"
                 name="answer"
-                value=""
+                value="${answer4}"
               />
               ${answer4}
             </label>
           </li>
         </ul>
       </fieldset>
-      <button class="btn__question btn__question-submit">Submit</button>
+      <button class="btn__question btn__question-submit" type="submit">Submit</button>
     </form>
   `;
 }
@@ -104,38 +104,38 @@ function makeScoreCard() {
 function makeWrongPopup() {
   let nextQuestion = renderNextQuestion();
   return `
-    <aside class='js-popup__response popup__response'>
+    <section class='js-popup__response popup__response'>
       <header class='popup__text popup__bg-wrong'>
         <hgroup>
           <h1>Incorrect</h1>
           <h2>The correct response was:</h2>
         </hgroup>
           <p class="js-popup__response--correct"></p>
-          <button class="js-btn__question-next btn__question btn__question-next">Next \u{27A1}</button>
+          <button class="js-btn__question-next btn__question btn__question-next" type="submit">Next \u{27A1}</button>
       </header>
-    </aside>
+    </section>
   `;
 }
 
 function makeRightPopup() {
   return `
-    <aside class='js-popup__response popup__response'>
+    <section class='js-popup__response popup__response'>
       <div class='popup__text popup__bg-correct'>
         <header>
           <hgroup>
             <h1>Correct</h1>
             <h2>1 step closer to SVG mastery</h2>
           </hgroup>
-            <button class="js-btn__question-next btn__question btn__question-next">Next \u{27A1}</button>
+            <button class="js-btn__question-next btn__question btn__question-next" type="submit">Next \u{27A1}</button>
         </header>
       </div>
-    </aside>
+    </section>
     `;
 }
 
 function makeQuizOverPopup() {
   return `
-    <aside class='js-popup__response-over popup__response popup__response-over'>
+    <section class='js-popup__response-over popup__response popup__response-over'>
       <div class='popup__text'>
         <header>
           <hgroup>
@@ -146,7 +146,7 @@ function makeQuizOverPopup() {
           <button class="js-btn__restart btn__question btn__question-next">Restart</button>
         </header>
       </div>
-    </aside>
+    </section>
     `;
 }
 
@@ -237,6 +237,8 @@ function removeScoreCard() {
 
 function handleStartQuiz() {
   $('.quiz__container').on('click', '.js-button__start', function(event) {
+    console.log(event);
+    
     removeStartPage();
     renderScoreCard();
     renderForm();
