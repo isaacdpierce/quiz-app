@@ -7,7 +7,7 @@ const STORE = {
       question: `What does SVG stand for?`,
       answer1: `Scalable Vector Graphics`,
       answer2: `Simple Visible Greyscale`,
-      answer3: `Skookum Valley of Gazette`,
+      answer3: `Skookum Valley Gazette`,
       answer4: `Sorted Visual Glyphs`,
       correctAnswer: 'answer1',
     },

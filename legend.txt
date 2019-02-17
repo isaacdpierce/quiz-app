@@ -1,0 +1,31 @@
+runQuiz
+
+renderStartPage
+    makeStartPage
+
+handleStartQuiz
+     removeStartPage
+     renderScoreCard
+     renderForm
+         makeForm                 ||     renderQuizOverPopup
+         renderNextQuestion                  makeQuizOverPopup
+                                             renderFeedback
+
+handleSubmitAnswer
+    removeRecentQuestion
+    renderCorrectResponse        ||     renderWrongResponse
+        makeRightPopup                      removeRecentQuestion
+        renderScoreCard                     makeWrongPopup
+            makeScoreCard
+
+handleNextQuestionButton
+    removePopup
+    renderForm
+        makeForm                 ||     renderQuizOverPopup
+        renderNextQuestion                  makeQuizOverPopup
+                                            renderFeedback
+
+ handleRestartQuiz
+     removePopup
+     removeScoreCard
+     renderStartPage

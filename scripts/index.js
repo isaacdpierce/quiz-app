@@ -1,15 +1,12 @@
-// TODO Check course requirements to make sure all is done.
-// TODO Show Correct answer when wrong answer is chosen
-// TODO Remove score from bottom of correct popup
 ////////////////////////////////////////////////////////
 // HTML PRODUCTION FUNCTIONS ////////////////////////
 ////////////////////////////////////////////////////
 
 function makeStartPage() {
   return `
-    <header class="js-hero__start hero__start">
-      <p class="title__name">The SVG Stomping Ground</p>
-      <h3>Complete your certification in SVG badassery</h3>
+    <header class="js-hero__start hero__start"> 
+      <p class="title__name">The SVG Stomping Grounds</p>
+      <h3>Complete your certification in SVG mastery</h3>
       <br>
       <button id="js-button__start" class="button__start" type="submit">START</button>
     </header>
@@ -30,7 +27,7 @@ function makeForm() {
   return `
     <form class="quiz__form">
       <header>
-        <span class="number">#${number}.</span>
+        <span class="number">#${number}</span>
         <p><span class="question">${question}</span></p>
       </header>
       <ul>
@@ -84,14 +81,14 @@ function makeForm() {
           </label>
         </li>
       </ul>
-      <button class="btn__question btn__question-submit">Submit Answer</button>
+      <button class="btn__question btn__question-submit">Submit</button>
     </form>
   `;
 }
 
 function makeScoreCard() {
   return `
-    <aside class="card__score">
+    <aside class="card__score position--corner">
     <div class="card__score--text">
       <h1>You have</h1>
       <div class="card__score--num">${STORE.rightAnswers}</div>
@@ -123,11 +120,13 @@ function makeRightPopup() {
   return `
     <aside class='js-popup__response popup__response'>
       <div class='popup__text popup__bg-correct'>
-        <div>
-          <h1>Correct</h1>
-          <p>1 step closer to SVG badassery</p>
-          <button class="js-btn__question-next btn__question btn__question-next">Next \u{27A1}</button>
-        </div>
+        <header>
+          <hgroup>
+            <h1>Correct</h1>
+            <h2>1 step closer to SVG mastery</h2>
+            <button class="js-btn__question-next btn__question btn__question-next">Next \u{27A1}</button>
+          </hgroup>
+        </header>
       </div>
     </aside>
     `;
@@ -141,7 +140,7 @@ function makeQuizOverPopup() {
           <h1>Quiz Complete</h1>
           <h2>You got ${STORE.rightAnswers} out 10</h2>
           <p>You oughta be <span class="feedback"></span> of yourself!</p>
-          <button class="js-btn__restart btn__question btn__question-next">Restart Quiz \u{27A1}</button>
+          <button class="js-btn__restart btn__question btn__question-next">Restart</button>
         </div>
       </div>
     </aside>
@@ -176,13 +175,12 @@ function renderNextQuestion() {
 
 function renderCorrectResponse() {
   STORE.rightAnswers += 1;
-  removeRecentQuestion();
   renderScoreCard();
   $('main').append(makeRightPopup);
 }
-function renderWrongResponse() {
-  removeRecentQuestion();
+function renderWrongResponse(answerText) {
   $('main').append(makeWrongPopup);
+  $('.js-popup__response--correct').append(answerText);
 }
 
 function renderQuizOverPopup() {
@@ -246,30 +244,25 @@ function handleSubmitAnswer() {
   // Onsubmit get correct answer from STORE
   $('.js-quiz__container').on('submit', 'form', function(event) {
     let currentQuestion = STORE.questionBlocks[STORE.questionCount - 1];
-    let answer = currentQuestion.correctAnswer;
-    let answerText = currentQuestion[answer];
+    let { correctAnswer } = currentQuestion;
+    let answerText = currentQuestion[correctAnswer];
+    let userAnswer = $('input:checked').attr('id');
 
     event.preventDefault();
+    removeRecentQuestion();
 
-    // check if answer is same as the checked input id
-    if (answer === $('input:checked').attr('id')) {
+    if (userAnswer === correctAnswer) {
       renderCorrectResponse();
     } else {
-      renderWrongResponse();
-      $('.js-popup__response--correct').append(answerText);
+      renderWrongResponse(answerText);
     }
   });
 }
 
-function formReset() {
-  removePopup();
-  removeRecentQuestion();
-  renderForm();
-}
-
 function handleNextQuestionButton() {
   $('main').on('click', '.js-btn__question-next', function(event) {
-    formReset();
+    removePopup();
+    renderForm();
   });
 }
 
@@ -278,7 +271,6 @@ function handleRestartQuiz() {
     STORE.questionCount = 0;
     STORE.rightAnswers = 0;
     removePopup();
-    removeRecentQuestion();
     removeScoreCard();
     renderStartPage();
   });
@@ -293,32 +285,3 @@ function runQuiz() {
 }
 
 $(runQuiz);
-
-//////////////////////////////////////////////////////////////
-// LEGEND ///////////////////////////////////////////////////
-////////////////////////////////////////////////////////////
-
-// function runQuiz() {
-//   renderStartPage();
-//     - > makeStartPage
-
-//   handleStartQuiz();
-//     - > removeStartPage();
-//     - > renderForm();
-
-//   handleSubmitAnswer();
-//     - > renderCorrectResponse(); || renderWrongResponse();
-
-//   handleNextQuestionButton();
-//     - > removePopup();
-//     - > renderForm();
-//     - > increment rightScore;
-
-//   handleQuizOver();
-//     - > renderQuizOverPopup();
-//       - > removeRecentQuestion();
-//       - > makeOverPopup();
-//         - > show total rightScore;
-//         - > show congratualtionsMessage || shameMessage;
-// TODO //////////////////////////////////////////////////////////
-//         - > handleRestartQuiz() button;
