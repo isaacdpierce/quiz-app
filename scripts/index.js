@@ -263,7 +263,6 @@ function handleSubmitAnswer() {
 
 function formReset() {
   removePopup();
-  removeRecentQuestion();
   renderForm();
 }
 
@@ -278,7 +277,6 @@ function handleRestartQuiz() {
     STORE.questionCount = 0;
     STORE.rightAnswers = 0;
     removePopup();
-    removeRecentQuestion();
     removeScoreCard();
     renderStartPage();
   });

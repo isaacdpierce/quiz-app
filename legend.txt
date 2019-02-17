@@ -21,7 +21,6 @@ handleSubmitAnswer
 handleNextQuestionButton
    formReset
        removePopup
-       removeRecentQuestion
        renderForm
            makeForm                 ||     renderQuizOverPopup
            renderNextQuestion                  makeQuizOverPopup
@@ -29,6 +28,5 @@ handleNextQuestionButton
 
  handleRestartQuiz
      removePopup
-     removeRecentQuestion
      removeScoreCard
      renderStartPage
