@@ -261,14 +261,10 @@ function handleSubmitAnswer() {
   });
 }
 
-function formReset() {
-  removePopup();
-  renderForm();
-}
-
 function handleNextQuestionButton() {
   $('main').on('click', '.js-btn__question-next', function(event) {
-    formReset();
+    removePopup();
+    renderForm();
   });
 }
 

@@ -19,12 +19,11 @@ handleSubmitAnswer
             makeScoreCard
 
 handleNextQuestionButton
-   formReset
-       removePopup
-       renderForm
-           makeForm                 ||     renderQuizOverPopup
-           renderNextQuestion                  makeQuizOverPopup
-                                               renderFeedback
+    removePopup
+    renderForm
+        makeForm                 ||     renderQuizOverPopup
+        renderNextQuestion                  makeQuizOverPopup
+                                            renderFeedback
 
  handleRestartQuiz
      removePopup
