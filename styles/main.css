@@ -106,6 +106,7 @@ button {
 
 button:focus,
 button:hover {
+  cursor: pointer;
   box-shadow: 0 0px 1px 1px rgba(0, 0, 0, 0.242);
   background: linear-gradient(#b4dbfe, #91c5fc 10%, #1f85de 80%, #2967a2 100%);
 }

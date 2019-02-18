@@ -5,8 +5,8 @@
 function makeStartPage() {
   return `
     <header class="js-hero__start hero__start"
-        <h1 class="title__name">The SVG Stomping Grounds</h1>
-        <h3>Complete your certification in SVG mastery</h3
+      <h1 class="title__name">The SVG Stomping Grounds</h1>
+      <h3>Complete your certification in SVG mastery</h3
       <br>
       <button class="js-button__start button__start" type="submit">START</button>
     </header>
@@ -104,10 +104,10 @@ function makeWrongPopup() {
   return `
     <section class='js-popup__response popup__response'>
       <header class='popup__text popup__bg-wrong'
-          <h1>Incorrect</h1>
-          <h2>The correct response was:</h2>
-          <p class="js-popup__response--correct"></p>
-          <button class="js-btn__question-next btn__question btn__question-next" type="submit">Next \u{27A1}</button>
+        <h1>Incorrect</h1>
+        <h2>The correct response was:</h2>
+        <p class="js-popup__response--correct"></p>
+        <button class="js-btn__question-next btn__question btn__question-next" type="submit">Next \u{27A1}</button>
       </header>
     </section>
   `;
@@ -118,10 +118,9 @@ function makeRightPopup() {
     <section class='js-popup__response popup__response'>
       <div class='popup__text popup__bg-correct'>
         <header>
-            <h1>Correct</h1>
-            <h2>1 step closer to SVG mastery</h2>
-
-            <button class="js-btn__question-next btn__question btn__question-next" type="submit">Next \u{27A1}</button>
+          <h1>Correct</h1>
+          <h2>1 step closer to SVG mastery</h2>
+          <button class="js-btn__question-next btn__question btn__question-next" type="submit">Next \u{27A1}</button>
         </header>
       </div>
     </section>
@@ -133,9 +132,8 @@ function makeQuizOverPopup() {
     <section class='js-popup__response-over popup__response popup__response-over'>
       <div class='popup__text'>
         <header>
-            <h1>Quiz Complete</h1>
-            <h2>You got ${STORE.rightAnswers} out 10 correct</h2>
-
+          <h1>Quiz Complete</h1>
+          <h2>You got ${STORE.rightAnswers} out 10 correct</h2>
           <p>You oughta be <span class="feedback"></span> of yourself!</p>
           <button class="js-btn__restart btn__question btn__question-next">Restart</button>
         </header>
@@ -230,9 +228,7 @@ function removeScoreCard() {
 //////////////////////////////////////////////////
 
 function handleStartQuiz() {
-  $('.quiz__container').on('click', '.js-button__start', function(event) {
-    console.log(event);
-    
+  $('.quiz__container').on('click', '.js-button__start', function(event) { 
     removeStartPage();
     renderScoreCard();
     renderForm();
