@@ -4,11 +4,9 @@
 
 function makeStartPage() {
   return `
-    <header class="js-hero__start hero__start"> 
-      <hgroup>
+    <header class="js-hero__start hero__start"
         <h1 class="title__name">The SVG Stomping Grounds</h1>
-        <h3>Complete your certification in SVG mastery</h3>
-      </hgroup>
+        <h3>Complete your certification in SVG mastery</h3
       <br>
       <button class="js-button__start button__start" type="submit">START</button>
     </header>
@@ -105,11 +103,9 @@ function makeWrongPopup() {
   let nextQuestion = renderNextQuestion();
   return `
     <section class='js-popup__response popup__response'>
-      <header class='popup__text popup__bg-wrong'>
-        <hgroup>
+      <header class='popup__text popup__bg-wrong'
           <h1>Incorrect</h1>
           <h2>The correct response was:</h2>
-        </hgroup>
           <p class="js-popup__response--correct"></p>
           <button class="js-btn__question-next btn__question btn__question-next" type="submit">Next \u{27A1}</button>
       </header>
@@ -122,10 +118,9 @@ function makeRightPopup() {
     <section class='js-popup__response popup__response'>
       <div class='popup__text popup__bg-correct'>
         <header>
-          <hgroup>
             <h1>Correct</h1>
             <h2>1 step closer to SVG mastery</h2>
-          </hgroup>
+
             <button class="js-btn__question-next btn__question btn__question-next" type="submit">Next \u{27A1}</button>
         </header>
       </div>
@@ -138,10 +133,9 @@ function makeQuizOverPopup() {
     <section class='js-popup__response-over popup__response popup__response-over'>
       <div class='popup__text'>
         <header>
-          <hgroup>
             <h1>Quiz Complete</h1>
             <h2>You got ${STORE.rightAnswers} out 10 correct</h2>
-          </hgroup>
+
           <p>You oughta be <span class="feedback"></span> of yourself!</p>
           <button class="js-btn__restart btn__question btn__question-next">Restart</button>
         </header>
