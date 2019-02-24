@@ -103,7 +103,7 @@ function makeWrongPopup() {
   let nextQuestion = renderNextQuestion();
   return `
     <section class='js-popup__response popup__response'>
-      <header class='popup__text popup__bg-wrong'
+      <header class='popup__text popup__bg-wrong'>
         <h1>Incorrect</h1>
         <h2>The correct response was:</h2>
         <p class="js-popup__response--correct"></p>
@@ -228,7 +228,7 @@ function removeScoreCard() {
 //////////////////////////////////////////////////
 
 function handleStartQuiz() {
-  $('.quiz__container').on('click', '.js-button__start', function(event) { 
+  $('.quiz__container').on('click', '.js-button__start', function(event) {
     removeStartPage();
     renderScoreCard();
     renderForm();

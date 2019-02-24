@@ -190,7 +190,7 @@ button:hover {
 }
 
 .popup__text h1 {
-  font-size: 6rem;
+  font-size: 8rem;
 }
 
 .popup__text h2 {
@@ -239,7 +239,6 @@ button:hover {
     rgba(255, 255, 255, 0) 58%
   );
   filter: blur(5px);
-
   z-index: 2;
 }
 
